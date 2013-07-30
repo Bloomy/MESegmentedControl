@@ -30,4 +30,6 @@
 // If you need to add or remove segments, then call clearBadges first.
 - (void)clearBadges;
 
+
+@property (assign) CGFloat scale;
 @end

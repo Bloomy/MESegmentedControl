@@ -109,6 +109,13 @@
 }
 
 
+// Creates a Badge with a given Text
++ (CustomBadge *)customBadgeWithString:(NSString *)badgeString andScale:(CGFloat)scale
+{
+    return [[[self alloc] initWithString:badgeString withScale:scale withShining:YES] autorelease];
+}
+
+
 // Creates a Badge with a given Text, Text Color, Inset Color, Frame (YES/NO) and Frame Color
 + (CustomBadge *)customBadgeWithString:(NSString *)badgeString withStringColor:(UIColor *)stringColor withInsetColor:(UIColor *)insetColor withBadgeFrame:(BOOL)badgeFrameYesNo withBadgeFrameColor:(UIColor *)frameColor withScale:(CGFloat)scale withShining:(BOOL)shining
 {

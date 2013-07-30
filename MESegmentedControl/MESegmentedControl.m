@@ -10,6 +10,15 @@
 
 @implementation MESegmentedControl
 
+- (id)init
+{
+    if (self = [super init]) {
+        _scale = 1.0;
+    }
+    return self;
+}
+
+
 - (void)setBadgeNumber:(NSUInteger)badgeNumber forSegmentAtIndex:(NSUInteger)segmentIndex usingBlock:(void (^)(CustomBadge *))configureBadge
 {
     // If this is the first time a badge number has been set, then initialise the badges
@@ -37,8 +46,8 @@
     if ((oldBadgeNumber == 0) && (badgeNumber > 0)) {
         // Add a badge, positioned on the upper right side of the requested segment
         // (Assumes that all segments are the same size - if segments are of different sizes, modify the below to use the widthForSegmentAtIndex method on UISegmentedControl)
-        CustomBadge *customBadge = [CustomBadge customBadgeWithString:[NSString stringWithFormat:@"%d", badgeNumber]];
-        [customBadge setFrame:CGRectMake(((self.frame.size.width / self.numberOfSegments) * (segmentIndex + 1)) - customBadge.frame.size.width + 5, -8, customBadge.frame.size.width, customBadge.frame.size.height)];
+        CustomBadge *customBadge = [CustomBadge customBadgeWithString:[NSString stringWithFormat:@"%d", badgeNumber] andScale:self.scale];
+        [customBadge setFrame:CGRectMake(((self.frame.size.width / self.numberOfSegments) * (segmentIndex + 1)) - customBadge.frame.size.width - 18, 0, customBadge.frame.size.width, customBadge.frame.size.height)];
         [_segmentBadges replaceObjectAtIndex:segmentIndex withObject:customBadge];
         [_badgeView addSubview:customBadge];
     }
